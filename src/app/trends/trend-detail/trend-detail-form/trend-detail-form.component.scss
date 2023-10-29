@@ -1,0 +1,15 @@
+@use "sass:color";
+@import "settings/variables";
+
+.trend__title {
+  font-size: 0.875rem;
+  margin-bottom: 0.8125rem;
+}
+
+.trend__action {
+  // margin: 0;
+  // margin-left: 0.75rem;
+  // padding: 0;
+  text-align: center;
+  background-color: color.scale($primary, $alpha: -80%);
+}

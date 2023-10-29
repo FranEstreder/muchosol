@@ -1,5 +1,5 @@
-@use 'sass:color';
-@import 'settings/variables';
+@use "sass:color";
+@import "settings/variables";
 
 .link-to-home {
   display: none;
@@ -31,6 +31,10 @@
 
   &:active {
     transform: scale(0.95);
+  }
+
+  &:hover {
+    cursor: pointer;
   }
 
   & > img {
@@ -73,8 +77,8 @@
   }
 
   &::after {
-    content: '';
-    background: url('/assets/Iconos/Actions/link.svg') no-repeat;
+    content: "";
+    background: url("/assets/Iconos/Actions/link.svg") no-repeat;
     background-size: cover;
     width: 0.75rem;
     height: 0.75rem;

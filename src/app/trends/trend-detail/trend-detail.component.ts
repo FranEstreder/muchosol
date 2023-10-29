@@ -13,7 +13,7 @@ import { selectSelectedTrend } from '../store/selectors';
     <article class="trend__detail" *ngIf="trend$ | async as trend">
       <header class="trend__header">
         <div class="trend__actions">
-          <button type="button" class="trend__action">
+          <button type="button" class="trend__action" (click)="formActivated()">
             <img src="assets/Iconos/Actions/edit.svg" alt="Editar noticia" />
           </button>
           <button type="button" class="trend__action">
@@ -35,11 +35,24 @@ import { selectSelectedTrend } from '../store/selectors';
         </div>
       </div>
     </article>
+    <div *ngIf="formActive" class="formActive">
+      <app-trend-detail-form
+        *ngIf="trend$ | async as trend"
+        [trend]="trend"
+        (formActivated)="formActivated()"
+      ></app-trend-detail-form>
+    </div>
   `,
   styleUrls: ['./trend-detail.component.scss'],
 })
 export class TrendDetailComponent {
   protected trend$ = this.store.select(selectSelectedTrend);
 
+  protected formActive: boolean = false;
+
   constructor(private store: Store) {}
+
+  protected formActivated() {
+    this.formActive = !this.formActive;
+  }
 }
