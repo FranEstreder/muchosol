@@ -1,4 +1,4 @@
-@import 'settings/variables';
+@import "settings/variables";
 
 .trend {
   width: 100%;
@@ -42,7 +42,7 @@
     margin-bottom: 0.75rem;
 
     &::before {
-      content: '';
+      content: "";
       position: absolute;
       left: 0;
       right: 0;
@@ -245,4 +245,17 @@
   .trend:nth-of-type(2) {
     margin-right: 2%;
   }
+}
+
+.trend__action--new {
+  padding: 15px;
+  border-radius: 50%;
+  background-color: $primary;
+  position: absolute;
+  top: 50%;
+  right: 200px;
+  transform: translate(-50%, 0);
+  z-index: 10;
+  cursor: pointer;
+  box-shadow: 0px 5px 20px 0px rgb(241, 95, 65);
 }

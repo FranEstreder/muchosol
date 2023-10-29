@@ -1,15 +1,84 @@
 @use "sass:color";
 @import "settings/variables";
 
-.trend__title {
-  font-size: 0.875rem;
-  margin-bottom: 0.8125rem;
+.overlay {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba($color: #000000, $alpha: 0.5);
+  z-index: 10;
+  top: 0;
+  left: 0;
 }
 
-.trend__action {
-  // margin: 0;
-  // margin-left: 0.75rem;
-  // padding: 0;
-  text-align: center;
-  background-color: color.scale($primary, $alpha: -80%);
+.modal_body {
+  z-index: 20;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 600px;
+  padding: 50px;
+  background-color: white;
+  overflow-y: auto;
+  box-sizing: border-box;
+  border-radius: 50px 5px 5px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+
+  .trend__title {
+    align-self: center;
+    font-size: 1.25rem;
+    margin: 0;
+  }
+
+  .trend__action {
+    text-align: center;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+
+    &--save {
+      color: white;
+      background-color: $primary;
+    }
+
+    &--cancel {
+      color: #939393;
+      background-color: white;
+    }
+  }
+}
+
+.body {
+  padding-top: 40px;
+
+  .formInput {
+    padding-bottom: 20px;
+
+    label {
+      padding-bottom: 10px;
+      color: #727272;
+      font-weight: bold;
+      display: block;
+    }
+
+    input,
+    textarea,
+    select,
+    option {
+      padding: 15px;
+      width: 100%;
+    }
+
+    textarea {
+      height: 300px;
+      resize: none;
+    }
+  }
 }

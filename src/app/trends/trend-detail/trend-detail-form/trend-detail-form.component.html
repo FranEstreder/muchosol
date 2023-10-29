@@ -1,7 +1,59 @@
-<h2 class="trend__title">
-  {{ trend | json }}
-</h2>
+<div class="overlay"></div>
 
-<button type="button" class="trend__action" (click)="closeForm()">
-  Nueva Noticia
-</button>
+<div class="modal_body" [@slideInOut]>
+  <div class="header">
+    <h2 class="trend__title">
+      {{ titleModal }}
+    </h2>
+
+    <div>
+      <button
+        type="button"
+        class="trend__action trend__action--cancel"
+        (click)="closeForm()"
+      >
+        Cancelar
+      </button>
+      <button
+        type="button"
+        class="trend__action trend__action--save"
+        (click)="saveForm()"
+      >
+        Guardar
+      </button>
+    </div>
+  </div>
+
+  <div class="body">
+    <form [formGroup]="form">
+      <div class="formInput">
+        <label for="url">URL</label>
+        <input id="url" type="text" formControlName="url" />
+      </div>
+
+      <div class="formInput">
+        <label for="title">Título</label>
+        <input id="title" type="text" formControlName="title" />
+      </div>
+
+      <div class="formInput">
+        <label for="image">Imagen</label>
+        <input id="image" type="text" formControlName="image" />
+      </div>
+
+      <div class="formInput">
+        <label for="provider">Proveedor</label>
+        <select formControlName="provider">
+          <option *ngFor="let provider of providers" [ngValue]="provider.value">
+            {{ provider.name }}
+          </option>
+        </select>
+      </div>
+
+      <div class="formInput">
+        <label for="body">Contenido</label>
+        <textarea id="body" type="text" formControlName="body"></textarea>
+      </div>
+    </form>
+  </div>
+</div>

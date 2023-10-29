@@ -1,13 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable, of } from 'rxjs';
+import { map, Observable } from 'rxjs';
 
+import { environment } from 'src/environments/environment';
 import { GetAllTrendsResponse } from './models/get-all-trends-response.model';
 import { GetOneTrendResponse } from './models/get-one-trend-response.model';
-import { Trend } from './models/trend.model';
 import { TrendProvider } from './models/trend-provider.model';
 import { TrendResponse } from './models/trend-response.model';
-import { environment } from 'src/environments/environment';
+import { Trend } from './models/trend.model';
 
 @Injectable()
 export class TrendService {
@@ -40,5 +40,19 @@ export class TrendService {
       title: trendResponse.title,
       url: trendResponse.url,
     };
+  }
+
+  public createTrend(trend: any): Observable<Trend> {
+    return this.httpClient
+      .post<any>(this.getAllUrl, trend)
+      .pipe(map(({ trend }) => this.mapToTrendModel(trend)));
+  }
+
+  public editTrend(id: string, trend: any): Observable<Trend> {
+    return this.httpClient.put<any>(`${this.getAllUrl}/${id}`, trend);
+  }
+
+  public deleteTrend(id: string): Observable<Trend> {
+    return this.httpClient.delete<any>(`${this.getAllUrl}/${id}`);
   }
 }

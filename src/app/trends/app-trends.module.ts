@@ -1,6 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 
@@ -14,9 +17,16 @@ import { TrendService } from './trend.service';
 import { TrendsListComponent } from './trends-list/trends-list.component';
 
 @NgModule({
-  declarations: [TrendsListComponent, TrendDetailComponent, TrendDetailFormComponent],
+  declarations: [
+    TrendsListComponent,
+    TrendDetailComponent,
+    TrendDetailFormComponent,
+  ],
   imports: [
     CommonModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    FormsModule,
     AppTrendsRoutingModule,
     HttpClientModule,
     StoreModule.forFeature(trendsFeatureKey, trendsReducer),
